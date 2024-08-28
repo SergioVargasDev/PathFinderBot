@@ -1,6 +1,6 @@
 from mesa import Model
 from mesa.time import RandomActivation
-from mesa.space import MultiGrid  # Switch to MultiGrid for discrete space handling
+from mesa.space import MultiGrid  # Use MultiGrid for a grid-based environment
 from agent import RobotAgent, ObstacleAgent
 
 class NavigationModel(Model):
@@ -34,7 +34,6 @@ class NavigationModel(Model):
     def grid_to_cell(self, pos):
         """Convert the position into a cell that fits within the grid bounds."""
         x, y = pos
-        # Convert to the nearest cell and ensure it stays within bounds
         cell_x = min(max(int(round(x)), 0), self.grid.width - 1)
         cell_y = min(max(int(round(y)), 0), self.grid.height - 1)
         return cell_x, cell_y
