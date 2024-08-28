@@ -89,6 +89,21 @@ plt.yticks(fontsize=12)
 plt.xlabel('X [m]', fontsize=14)
 plt.ylabel('Y [m]', fontsize=14)
 plt.title('Simulación del movimiento de dos robots con A*', fontsize=16)
+
+# Plot the initial positions of the robots
+plt.scatter([p[0] for p in robot_positions], [p[1] for p in robot_positions], color='green', label='Robot Start Positions')
+
+# Plot the obstacles as red rectangles
+for corners in obstacle_corners:
+    x_coords = [c[0] for c in corners]
+    y_coords = [c[1] for c in corners]
+    plt.fill(x_coords + [x_coords[0]], y_coords + [y_coords[0]], color='red', alpha=0.5)
+
+# Plot the target positions
+plt.scatter([p[0] for p in target_positions], [p[1] for p in target_positions], color='blue', marker='x', label='Target Positions')
+
+plt.legend()
 plt.show()
 
+# Run the server
 server.launch()
