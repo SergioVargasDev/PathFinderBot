@@ -8,14 +8,15 @@ class Robot:
         self.step_size = step_size
         self.path_taken = [start_pos]
         self.current_target = None
-        self.obstacle_corners = [self.expand_obstacle(corners, robot_size) for corners in obstacle_corners]  # Expand obstacles
+        self.robot_radius = 0.153  # Robot's maximum radius based on given dimensions
+        self.obstacle_corners = [self.expand_obstacle(corners, self.robot_radius) for corners in obstacle_corners]  # Expand obstacles
 
-    def expand_obstacle(self, corners, robot_size):
-        # Expand each obstacle by the robot's dimensions (adding a margin of safety)
+    def expand_obstacle(self, corners, margin):
+        # Expand each obstacle by the robot's radius (adding a margin of safety)
         expanded_corners = []
         for x, y in corners:
-            expanded_corners.append((x - robot_size[0] / 2, y - robot_size[1] / 2))
-            expanded_corners.append((x + robot_size[0] / 2, y + robot_size[1] / 2))
+            expanded_corners.append((x - margin, y - margin))
+            expanded_corners.append((x + margin, y + margin))
         return expanded_corners
 
     def move(self):
