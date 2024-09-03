@@ -4,7 +4,7 @@ from robot import Robot
 # Define robot start positions, target positions, and obstacle corners
 robot_positions = [
     (-2.46190001765768, -0.122421496970765),
-    (-0.456652876507227, -2.01699055240998)
+    (-0.456652876507227, -1.99968255961363)
 ]
 
 obstacle_corners = [
